@@ -16,6 +16,8 @@ import { Rajasthan } from "./pages/locations/Rajasthan/Rajasthan";
 import { Kerala } from "./pages/locations/Kerala/Kerala";
 import { Error } from "./pages/Error";
 import { Delhi } from "./pages/locations/Delhi/Delhi";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
           <Route path="/locations/rajasthan" element={<Rajasthan />} />
           <Route path="/locations/kerala" element={<Kerala />} />
           <Route path="/locations/delhi" element={<Delhi />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
 
           <Route path="*" element={<Error/>} />
         </Routes>

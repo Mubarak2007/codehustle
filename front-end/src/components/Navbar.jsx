@@ -1,13 +1,14 @@
 import './Navbar.css'
-import { Link } from "react-router-dom"
+import { Link,useNavigate } from "react-router-dom"
 
 export const Navbar = () => {
+  const navigate = useNavigate()
   
 
   return (
     <nav>
       <div className="logo">
-        <Link to="/"><span>T</span>rabebo</Link>
+        <Link to="/">Travel<span>Zy</span></Link>
         <p>Travel made easy</p>
       </div>
       <input type="checkbox" id="check" />
@@ -55,6 +56,12 @@ export const Navbar = () => {
         </li>
         <li><Link to="/locations" id="d">Locations</Link></li>
         <li><Link to="/contact" id="d">Contact</Link></li>
+       <button onClick={
+        ()=>{
+          navigate('/signup')
+        }
+        
+       } className='!px-5 !py-2 bg-green-300 rounded-lg cursor-pointer'>Login/Register</button>
       </ul>
     </nav>
   )
