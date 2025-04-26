@@ -1,7 +1,38 @@
-import React from "react";
+import React , {useState} from "react";
 import image from '../assets/pageimg.png'
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
+
 
 const Login = () => {
+
+const [email, setEmail] = useState("")
+const [password, setPassword] = useState("")
+const navigate = useNavigate()
+const {login} = useAuth()
+
+  const handelLogin = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const response = await axios.post('http://127.0.0.1:5000/api/users/login', {
+        email,
+        password,
+      }, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+        
+      });
+  
+      console.log(response.data.token); 
+      login(response.data.token)
+      navigate('/');
+    } catch (e) {
+      console.error("ERROR:", e.response?.data?.message || e.message);
+    }
+  };
   return (
     <div className="flex h-screen">
       {/* Left Section with Image */}
@@ -12,7 +43,7 @@ const Login = () => {
           className="w-full h-full object-cover rounded-tl-lg rounded-bl-lg"
         />
       </div>
-<div>iam khan</div>
+
 
 
       {/* Right Section with Form */}
@@ -24,12 +55,14 @@ const Login = () => {
           </h1>
           <p className="text-center text-gray-600 mb-6">Login with Email</p>
 
-          <form className="space-y-4 !w-[100%] !shadow-[0px] !p-0 ">
+          <form onSubmit={handelLogin} className="space-y-4 !w-[100%] !shadow-[0px] !p-0 ">
             <div>
               <label className="block text-sm mb-2">Email Id</label>
               <div className="flex items-center border border-gray-300 px-3 py-2 rounded">
                 <span className="text-gray-500 mr-2">@</span>
                 <input
+                value={email} 
+                onChange={(e)=>setEmail(e.target.value)}
                   type="email"
                   defaultValue="Mubarak@gmail.com"
                   className="w-full outline-none border-none text-base"
@@ -55,6 +88,10 @@ const Login = () => {
                   />
                 </svg>
                 <input
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
+
+
                   type="password"
                   defaultValue="*****"
                   className="w-full outline-none border-none text-base"
