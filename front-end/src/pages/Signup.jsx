@@ -3,20 +3,28 @@ import image from '../assets/pageimg.png'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 
-import {useAuth} from "../AuthContext"
+import sign from '../assets/sign.png'
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
+import { FaApple } from "react-icons/fa";
+
+
+
+
+import { useAuth } from "../AuthContext"
 const Signup = () => {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
-  const {login} = useAuth()
-  
-  
-  
+  const { login } = useAuth()
+
+
+
   const handelsignup = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await axios.post('http://127.0.0.1:5000/api/users/register', {
         email,
@@ -25,127 +33,121 @@ const Signup = () => {
         headers: {
           "Content-Type": "application/json"
         }
-        
+
       });
-  
-      console.log(response.data.token); 
+
+      console.log(response.data.token);
       login(response.data.token)
       navigate('/');
     } catch (e) {
       console.error("ERROR:", e.response?.data?.message || e.message);
     }
   };
-  
-  
+
+
 
 
 
   return (
     <div className="flex h-screen">
       {/* Left Section with Image */}
-      <div className="w-1/2">
-        <img
-          src={image}
-          alt="Dubai View"
-          className="w-full h-full object-cover rounded-tl-lg rounded-bl-lg"
-        />
+      <div className="lg:w-[60%] ">
+        <img src={sign} alt="banner" className='w-full h-full object-cover' />
       </div>
 
       {/* Right Section with Form */}
-      <div className="w-1/2 flex justify-center items-center bg-white rounded-tr-lg rounded-br-lg">
-        <div className="w-full max-w-md p-6">
-          <h2 className="text-center text-lg font-bold mb-2">Travelezy</h2>
-          <h1 className="text-center text-3xl font-medium mb-2 font-serif">
-            Welcome
-          </h1>
-          <p className="text-center text-gray-600 mb-6">Login with Email</p>
+      <div className="w-1/2 flex flex-col gap-5 items-center justify-center">
+        <div className="w-[509px] h-[608px]  gap-5 flex flex-col items-center justify-center">
+          {/* Logo */}
+          <h2 className="text-xl font-bold mb-2 font-sans text-[25px]">Travelezy</h2>
 
-          <form onSubmit={handelsignup} className="space-y-4 !w-[100%] !shadow-[0px] !p-0 ">
+          {/* Heading */}
+          <h1 className="text-[74px] font-sans text-[#1b344f] leading-tight text-center mb-2">
+            Create Account
+          </h1>
+          <p className="text-gray-400 text-[16px] font-sans mb-10 text-center">
+            Signup with Email
+          </p>
+
+          {/* Form */}
+          <form onSubmit={handelsignup} className="flex flex-col gap-3 !w-full !shadow-[0px] !p-0 max-w-md space-y-6">
+            {/* Email */}
             <div>
-              <label className="block text-sm mb-2">Email Id</label>
-              <div className="flex items-center border border-gray-300 px-3 py-2 rounded">
-                <span className="text-gray-500 mr-2">@</span>
+              <label className="text-[16px] font-semibold text-gray-700">Email Id</label>
+              <div className="h-[50px] flex items-center border border-gray-300 rounded-lg px-4 mt-2">
                 <input
+                  type="email"
+                  placeholder="@Email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-
-                  type="email"
-                  className="w-full outline-none border-none text-base"
+                  className="w-full focus:outline-none text-gray-700  placeholder:text-gray-400 bg-transparent"
                 />
               </div>
             </div>
 
-            <div>
-              <label className="block text-sm mb-1">Password</label>
-              <div className="flex items-center border border-gray-300 px-3 py-2 rounded">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 h-4 text-gray-500 mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 15v2m0-6v.01M17 9V7a5 5 0 00-10 0v2m-2 0h14v10H5V9z"
-                  />
-                </svg>
+            {/* Password */}
+            <div className="mt-4">
+              <label className="text-[16px] font-semibold text-gray-700">Password</label>
+              <div className="h-[50px] flex items-center border border-gray-300 rounded-lg px-4 mt-2">
                 <input
-                  onChange={(e) => setPassword(e.target.value)}
-                  value={password}
                   type="password"
-
-                  className="w-full outline-none border-none text-base"
+                  placeholder="******************"
+                  value={password}  
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full focus:outline-none text-gray-700 placeholder:text-gray-400 bg-transparent"
                 />
               </div>
             </div>
 
-            <div className="text-right text-sm text-gray-500 cursor-pointer hover:underline mb-4">
-              Forgot your password?
+            {/* Forgot Password */}
+            <div className="text-right text-[12px]">
+              <a href="#" className="text-gray-400 hover:underline">
+                Forgot your password?
+              </a>
             </div>
 
-            <button
-              type="submit"
-              className="w-full py-2 bg-lime-400 text-white font-bold rounded hover:bg-lime-500"
-            >
-              LOGIN
-            </button>
+            {/* Signup Button */}
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="w-[125px] h-[48px] font-sans bg-lime-400 hover:bg-lime-500 text-black font-semibold rounded-lg transition duration-300 text-[16px] shadow-sm"
+              >
+                SIGNUP
+              </button>
+            </div>
+
+            {/* OR Divider */}
+            <div className="flex items-center my-4">
+              <hr className="flex-grow border-gray-300" />
+              <span className="mx-3 text-gray-400 text-[14px]">OR</span>
+              <hr className="flex-grow border-gray-300" />
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex justify-center items-center gap-[10px]">
+              <div className="w-[95px] h-[54px] flex justify-center items-center p-3 border border-gray-200 rounded-lg bg-[#E7F2F5] hover:bg-gray-50">
+                <FcGoogle className="w-6 h-6" />
+              </div>
+              <div className="w-[95px] h-[54px] flex justify-center items-center p-3 border border-gray-200 rounded-lg bg-[#E7F2F5] hover:bg-gray-50">
+                <FaFacebook className="w-6 h-6 text-blue-600" />
+              </div>
+              <div className="w-[95px] h-[54px] flex justify-center items-center p-3 border border-gray-200 rounded-lg bg-[#E7F2F5] hover:bg-gray-50">
+                <FaApple className="w-6 h-6 text-black" />
+              </div>
+            </div>
+
+            {/* Bottom Text */}
+            <p className="text-center text-[14px] font-sans text-gray-500 mt-6">
+              Already have account?{" "}
+              <a href="/login" className="text-lime-500 font-semibold hover:underline">
+                Login Now
+              </a>
+            </p>
           </form>
-
-          <div className="flex items-center my-6">
-            <div className="flex-1 h-px bg-gray-300"></div>
-            <span className="mx-4 text-gray-400 text-sm">OR</span>
-            <div className="flex-1 h-px bg-gray-300"></div>
-          </div>
-
-          <div className="flex justify-center gap-4 mb-4">
-            <img
-              src="https://www.svgrepo.com/show/475656/google-color.svg"
-              alt="Google"
-              className="w-10 h-10 cursor-pointer"
-            />
-            <img
-              src="https://www.svgrepo.com/show/475647/facebook-color.svg"
-              alt="Facebook"
-              className="w-10 h-10 cursor-pointer"
-            />
-            <img
-              src="https://www.svgrepo.com/show/452234/apple.svg"
-              alt="Apple"
-              className="w-10 h-10 cursor-pointer"
-            />
-          </div>
-
-          <p className="text-center text-sm text-gray-600">
-            Don’t have account?{" "}
-            <a href="#" className="text-black font-bold hover:underline">
-              Register Now
-            </a>
-          </p>
         </div>
       </div>
+
+
     </div>
   );
 };
