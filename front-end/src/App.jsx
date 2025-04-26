@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import { Home } from "./pages/Home";
 import { Contact } from "./pages/Contact";
 import { Locations } from "./pages/Locations";
@@ -23,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navbar />
+       <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/book" element={<Book />} />
@@ -42,7 +41,7 @@ function App() {
 
           <Route path="*" element={<Error/>} />
         </Routes>
-        <Footer />
+       
       </Router>
     </div>
   );
