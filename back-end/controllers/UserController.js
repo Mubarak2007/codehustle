@@ -2,8 +2,7 @@ import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET;
-console.log(JWT_SECRET)
+
 
 // Register a new user
 export const registerUser = async (req, res) => {
@@ -21,7 +20,7 @@ export const registerUser = async (req, res) => {
       password: hashedPassword,
     });
 
-    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
     res.status(201).json({ user, token });
   } catch (err) {
@@ -40,7 +39,7 @@ export const loginUser = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
 
-    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
     res.json({ user, token });
   } catch (err) {

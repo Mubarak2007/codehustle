@@ -1,8 +1,10 @@
 import './Navbar.css'
 import { Link,useNavigate } from "react-router-dom"
+import { useAuth } from '../AuthContext'
 
 export const Navbar = () => {
   const navigate = useNavigate()
+  const {isAuthenticated,logout} = useAuth()
   
 
   return (
@@ -56,12 +58,22 @@ export const Navbar = () => {
         </li>
         <li><Link to="/locations" id="d">Locations</Link></li>
         <li><Link to="/contact" id="d">Contact</Link></li>
-       <button onClick={
+
+        {isAuthenticated ?<button onClick={
+        ()=>{
+          logout()
+          navigate('/')
+        }
+        
+       } className='!px-5 !py-2 bg-green-300 rounded-lg cursor-pointer'>logout</button>
+      :
+      <button onClick={
         ()=>{
           navigate('/signup')
         }
         
-       } className='!px-5 !py-2 bg-green-300 rounded-lg cursor-pointer'>Login/Register</button>
+       } className='!px-5 !py-2 bg-green-300 rounded-lg cursor-pointer'>Login/Register</button> }
+       
       </ul>
     </nav>
   )
