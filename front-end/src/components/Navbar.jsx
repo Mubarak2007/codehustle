@@ -12,7 +12,7 @@ export const Navbar = () => {
         <p>Travel made easy</p>
       </div>
       <input type="checkbox" id="check" />
-      <label for="check" className="checkbtn">
+      <label  className="checkbtn">
         <i className="fa fa-bars"></i>
       </label>
 
