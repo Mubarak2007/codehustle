@@ -36,7 +36,7 @@ export default function Form() {
         <textarea placeholder={"Write to us"} required name="info"></textarea>
       </div>
       <div className="sub-btn">
-        <button type="submit" className="subbtn">Submit</button>
+        <button type="submit" className="sub-btn">Submit</button>
       </div>
     </form>
     </>
