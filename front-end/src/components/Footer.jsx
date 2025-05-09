@@ -13,8 +13,9 @@ export const Footer = () => {
               <span id="fdiff">A</span>bout us
             </h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est,
-              ullam maxime ratione porro quaerat in?
+              We craft unforgettable travel experience tailored just for you.
+              from exotic beach getaways to thrilling adventure tours, we ensure seamless journeys with top-notch hospitality...
+              let us turn your dream vacation into reality 
             </p>
           </div>
           <div className="branch">
