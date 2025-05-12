@@ -14,7 +14,7 @@ export const Home = () => {
   {/* Fullscreen Background Image */}
   <div className="absolute inset-0 -z-10">
     <img
-      src="https://images.pexels.com/photos/915972/pexels-photo-915972.jpeg?cs=srgb&dl=adult-adventure-backlit-915972.jpg&fm=jpg"
+      src="land.jpg"
       alt=""
       className="w-full h-full object-cover"
     />
@@ -43,11 +43,11 @@ export const Home = () => {
   <div className="absolute bottom-0 w-full h-[100px] bg-black/60 text-white py-3 px-2 flex flex-col sm:flex-row justify-around text-sm items-center gap-2 ">
     <div className="flex items-center gap-2">
       <i className="fas fa-envelope text-[#92e3a9]"></i>
-      <a  href="mailto:info.trabebo@gmail.com    ">info.trabebo@gmail.com</a>
+      <a  href="mailto:info.trabebo@gmail.com    ">info.travelzy@gmail.com</a>
     </div>
     <div className="flex items-center gap-2">
       <i className="fab fa-instagram text-[#92e3a9]"></i>
-      <span>trabebo_1</span>
+      <span>travelzy</span>
     </div>
     <div className="flex items-center gap-2 ">
       <i className="fas fa-phone-alt text-[#92e3a9]"></i>
