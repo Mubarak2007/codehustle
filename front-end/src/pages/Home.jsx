@@ -1,6 +1,6 @@
 import "./Home.css";
 import { Link } from "react-router-dom";
-import image from "../media/land.jpg";
+import Image from "../media/land.png";
 import { Services } from "../components/Services";
 import { BookSection } from "../components/BookSection";
 import { PackageSection } from "../components/PackageSection";
@@ -14,8 +14,8 @@ export const Home = () => {
   {/* Fullscreen Background Image */}
   <div className="absolute inset-0 -z-10">
     <img
-      src="land.jpg"
-      alt=""
+      src={Image}
+      alt="image"
       className="w-full h-full object-cover"
     />
   </div>
@@ -23,12 +23,12 @@ export const Home = () => {
   {/* Content */}
   <div className="flex flex-col gap-5 items-center justify-center h-full text-center px-4">
     <h3 className="">
-      <span className="text-7xl poppins-bold ">Start Your Journey with </span><br />
-      <span className="text-[#92e3a9] charm-bold text-6xl leading-2.5">Travelzy</span>
+      <span className="text-7xl poppins-bold white">Start Your Journey with </span><br />
+      <span className="text-[#92e3a9] charm-bold text-6xl leading-2.5 ">Travelzy</span>
      
     </h3>
 
-    <p className="text-lg sm:text-xl mt-10 mb-6 p-5">
+    <p className="text-lg sm:text-xl mt-10 mb-6 p-5 white">
       Explore the world with us for the best travel experience
     </p>
 

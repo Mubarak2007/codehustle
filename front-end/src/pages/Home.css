@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap');
 
 
-
+.white{
+  color: antiquewhite;
+}
 .charm-regular {
   font-family: "Charm", cursive;
   font-weight: 400;
@@ -25,6 +27,7 @@
   font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-style: normal;
+  color: white;
 }
 
 .poppins-bold {
