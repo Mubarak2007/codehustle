@@ -1,6 +1,6 @@
 import "./Home.css";
 import { Link } from "react-router-dom";
-import bgvideo from "../media/evening-bg.mp4";
+import image from "../media/land.jpg";
 import { Services } from "../components/Services";
 import { BookSection } from "../components/BookSection";
 import { PackageSection } from "../components/PackageSection";
